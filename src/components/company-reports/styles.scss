@@ -1,0 +1,20 @@
+@import "../../mixins";
+@import "../../common";
+
+.details-tab {
+  color: #{$primary} !important;
+}
+
+.details-tab.active {
+  color: #{$accent} !important;
+  border-bottom: 2px solid #{$accent} !important;
+}
+
+.details-pane {
+  height: auto;
+  color: #{$primary};
+  @include lg {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}

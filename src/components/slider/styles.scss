@@ -1,0 +1,12 @@
+.slider-div {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  .slider-img {
+    width: 60%;
+  }
+}
+
+.slider-div:focus {
+  outline: none;
+}

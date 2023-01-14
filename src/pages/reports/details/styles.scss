@@ -1,0 +1,29 @@
+@import "../../../common";
+
+#details-col {
+  .company-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 300px;
+    }
+  }
+  .company-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #{$primary};
+    p {
+      width: 100%;
+      text-align: start !important;
+    }
+  }
+}
+
+#btn {
+  background-color: #{$btn-primary};
+}

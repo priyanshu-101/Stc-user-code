@@ -1,0 +1,35 @@
+@import "../../common";
+
+#table {
+  padding: 10px;
+}
+
+.table-row:nth-child(2n) {
+  background-color: rgba(72, 95, 106, 0.1);
+}
+
+.table-row {
+  border-bottom: 2px solid #{$accent};
+}
+
+.table-row:last-child {
+  border-bottom: 2px solid rgba(72, 95, 106, 0.1);
+}
+
+.table-head {
+  background-color: #{$accent};
+  tr {
+    th {
+      font-weight: bold;
+    }
+  }
+}
+
+#view-btn{
+  background-color: #{$accent};
+  height: 2rem;
+  width: 5rem;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}

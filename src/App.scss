@@ -1,0 +1,33 @@
+@import "./common";
+
+.primary-bg {
+  background-color: #{$primary} !important;
+}
+
+.primary-text {
+  color: #{$primary} !important;
+}
+
+.primary-btn {
+  background-color: #{$btn-primary};
+}
+
+.primary-btn:hover {
+  background-color: #{$btn-primary-hover};
+}
+
+.danger-btn {
+  background-color: #{$btn-danger};
+}
+
+.danger-btn:hover {
+  background-color: #{$btn-danger-hover};
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-white:hover {
+  color: #{$btn-primary-hover} !important;
+}

@@ -1,0 +1,90 @@
+@import "../../../mixins";
+@import "../../../common";
+#slider-col {
+  padding: 10px;
+}
+
+.reports-row {
+  margin: 5px;
+}
+
+.reports-row:nth-child(2n -1) {
+  background-color: #ffffff;
+  border-radius: 20px;
+  .table-header {
+    color: #{$primary};
+  }
+  #table {
+    // color: #ffffff;
+    .table-body {
+      .table-row {
+        th {
+          button {
+            background-color: #{$accent} !important;
+          }
+        }
+      }
+    }
+  }
+}
+#reports-col:hover{
+  background-color: #{$accent} !important;
+  color: #ffffff;
+}
+#reports-col {
+  font-size: 25px;
+  font-weight: bolder;
+  padding-left: 0 10px;
+  width: 25%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  border-bottom: 1px solid #{$accent};
+}
+
+#reports-table-col {
+  // padding: 0px 40px 40px 40px;
+  .table-header {
+    font-weight: bold;
+    font-size: 18px;
+    
+  }
+}
+
+.reports-col-divider {
+  color: #{$accent};
+  opacity: 1 !important;
+  width: 30%;
+  height: 2px !important;
+  border-radius: 100px;
+}
+.filter{
+  display: flex;
+  input{
+    margin-right: 2vw;
+  }
+  @include sm {
+    flex-direction: column;  
+  }
+}
+input{
+  
+  border: 1px solid #{$accent};
+  border-radius: 1.5rem;
+  padding-left: 1.5em;
+  outline: none;
+}
+
+input:focus{
+  border: 3px solid #{$accent};
+}
+.info_filter{
+  display: flex;
+  justify-content: space-between;
+  @include sm {
+    flex-direction: column;  
+  }
+}

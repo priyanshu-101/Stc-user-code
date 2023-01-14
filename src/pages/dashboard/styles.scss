@@ -1,0 +1,30 @@
+@import "../../common";
+
+#info-user-col {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#info-synopsis-col {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+#info-synopsis-header {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.info-user-col-divider {
+  color: #{$accent};
+  opacity: 1 !important;
+  width: 30%;
+  height: 2px !important;
+  border-radius: 100px;
+}

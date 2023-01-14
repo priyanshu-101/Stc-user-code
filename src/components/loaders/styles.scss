@@ -1,0 +1,21 @@
+@import "../../common";
+
+.page-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .spinner-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: #{$btn-primary} !important;
+    .spinner {
+      margin-bottom: 25px;
+    }
+  }
+}

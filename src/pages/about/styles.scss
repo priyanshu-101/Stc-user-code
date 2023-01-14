@@ -1,0 +1,209 @@
+@import "../../common";
+@import "../../breakpoints";
+@import "../../mixins";
+
+
+
+img {
+  width: 8%;
+}
+.info-section{
+  width: 100;
+  
+}
+.bg-img{
+  width: 50%;
+}
+.groupimg{
+  width: 100%;
+  height: 38rem;
+  border-radius: 10px;
+}
+.info-container-divider {
+  width: 90%;
+  color: #{$accent};
+  opacity: 1 !important;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 3px;
+  border-radius: 100px;
+}
+.profile-img{
+  border: 2px solid;
+  height: 4rem;
+  width: 4rem;
+  margin: 0 2rem;
+}
+ul{
+  list-style-type: none;  
+}
+.heading{
+  color: #{$accent};
+}
+.profile{
+  padding-top: 0.8rem;
+} 
+.list-group{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .heading{
+//     text-align: center;
+//     color: #00c853;
+//     padding: 1%;
+// }
+
+// .heading h1{
+//     font-size: 2.5rem;
+//     margin: 0.5%;
+
+// }
+
+// .heading h2{
+//     font-size: 2rem;
+// }
+
+// /* middle section  */
+
+// .upperbox{
+//     display: flex;
+//     height:15rem;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .names{
+//     /* display: flex; */
+//     text-align: center;
+//     width: 33%;
+//     justify-content: center;
+    
+// }
+
+
+// .names img{
+//     display: block;
+//     border-radius: 50%;
+//     height: 160px;
+//     width: 160px;
+//     margin: auto;
+//     cursor: pointer;
+
+// }
+// p{
+//     font-size: 1rem;
+//     font-weight: 600;
+// }
+
+// /* bottom-section */
+
+// #bottom{
+//     text-align: center;
+// }
+
+// .member-list{
+//     display: flex;
+//     //flex-wrap: wrap;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .member{    
+//     display: flex;
+//     width: 50%;
+// }
+
+// .member img{
+//     border-radius: 50%;
+//     margin: 10%;
+// }
+
+// .member h4{
+//     margin: 20px 0 0 15px;
+// }
+
+// .member p{
+//     margin: 0 0 0 15px;
+// }
+
+// .text{
+//     width: 100%;
+//     text-align: start;
+// }
+
+// .mem-core{
+//     width: 50vw;
+//     display: flex;
+//     flex-direction: column;
+// }
+#team{
+  .heading{
+    display: flex;
+    justify-content: center;
+  }
+}
+#bottom{
+  .heading{
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+.upperbox{
+  display: flex;
+  justify-content: space-between;
+  .names{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img{
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      margin: auto;
+    }
+    h4{
+     text-align: center;
+    }
+  }
+}
+.member-list{
+  display: flex;
+  justify-content: space-around;
+  @include md {
+    flex-direction: column;
+  }
+  .mem-core{
+    .names{
+      display: flex;
+      margin-top: 2rem;
+      img{
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        margin: auto;
+      }
+      .text{
+        margin-left: 2rem;
+      }
+    }
+  }
+}

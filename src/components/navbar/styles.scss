@@ -1,0 +1,45 @@
+@import "../../common";
+@import "../../mixins";
+
+#navbar-navigation {
+  border-left: 2px solid white;
+  @include lg {
+    border-left: none;
+    padding-left: 30px;
+  }
+}
+
+#navbar-navigation-item {
+  padding-left: 10px;
+  @include lg {
+    padding-left: 0;
+  }
+}
+
+.navbar-toggler {
+  color: #{$btn-primary} !important;
+}
+
+.navbar-nav {
+  .active {
+    color: #{$btn-primary} !important;
+  }
+}
+
+.dropdown {
+  background-color: #{$primary};
+  @include lg {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+#logout-menu {
+  li {
+    a {
+      border: 1px solid #{$btn-primary};
+      background-color: #{$primary};
+    }
+  }
+}

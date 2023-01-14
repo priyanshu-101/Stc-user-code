@@ -1,0 +1,44 @@
+@import "../../common";
+
+#feedback-col {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#feedback-form-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-col-divider {
+  color: #{$accent};
+  opacity: 1 !important;
+  width: 30%;
+  height: 2px !important;
+  border-radius: 100px;
+}
+
+.feedback-btn-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  .form-submit-btn {
+    background-color: #{$btn-primary} !important;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-submit-btn-icon {
+    padding: 0;
+    margin: 0;
+    font-size: 70px;
+  }
+}

@@ -1,0 +1,37 @@
+@import "../../common";
+
+.info-card:hover {
+  color: #ffffff !important ;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    .card-text-title {
+      font-size: 50px;
+    }
+    .card-text-description {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+  }
+  .card-action {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    .card-action-btn {
+      background-color: #{$btn-primary};
+    }
+    .card-action-btn:hover {
+      background-color: #{$btn-primary-hover};
+    }
+  }
+}

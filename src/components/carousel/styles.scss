@@ -1,0 +1,39 @@
+@import "../../common";
+
+.carousel-control-prev {
+  color: #{$btn-primary};
+  opacity: 1 !important;
+  .carousel-control-prev-icon {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #{$primary};
+    opacity: 0.8;
+  }
+}
+
+.carousel-control-prev:hover {
+  color: #{$btn-primary-hover};
+}
+
+.carousel-control-next {
+  color: #{$btn-primary};
+  opacity: 1 !important;
+  .carousel-control-next-icon {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #{$primary};
+    opacity: 0.8;
+  }
+}
+
+.carousel-control-next:hover {
+  color: #{$btn-primary-hover};
+}
