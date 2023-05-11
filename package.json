@@ -23,14 +23,15 @@
     "reselect": "^4.1.5",
     "sass": "^1.45.0",
     "scss": "^0.2.4",
+    "serve": "^14.2.0",
     "slick-carousel": "^1.8.1",
     "store": "^2.0.12",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "start:n17": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "build:n17": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

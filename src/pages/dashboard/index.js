@@ -1,6 +1,7 @@
 //import { Helmet } from "react-helmet";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
-
+import unlike from "../../asset/unlike.svg"
+import liked from "../../asset/liked.png"
 import InfoCard from "../../components/cards/info";
 import Navbar from "../../components/navbar";
 import "./styles.scss";
@@ -10,21 +11,64 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
-const baseURL = "http://localhost:5000/dashboard";
+const baseURL = "http://13.235.49.202:5000/dashboard";
 
 const Dashboard = () => {
   const [data, setdata] = useState(null);
-
+  const [like,setlike] = useState(0);
+  const [views, setviews] = useState(0);
+  const [aliked,setaliked] = useState(false);
   const nav = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  const likeadd = () =>{
+    setlike(like+1);
+    setaliked(!aliked);
+    fetch(`http://13.235.49.202:5000/api/like/${user.LibraryID}`,{
+      headers:{
+        authorization: `Bearer ${user.access_token}`
+      }
+    }).then(response => response.json()).then(response => {if(response.success == false){
+      setlike(like-1);
+      setaliked(!aliked);
+    }}).catch(e =>{
+      setlike(like-1);
+      // setaliked(!aliked);
+    })
+  }
   const fetchData = async()=>{
-    //console.log(user);
-    // console.log("d",user.access_token)
-    fetch('http://localhost:5000/api/count',{
+    fetch('http://13.235.49.202:5000/api/count',{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }
     }).then(response => response.json()).then(response => {setdata(response.data[0].COUNT)}).catch(e =>{
+        nav('/');
+    })
+    fetch(`http://13.235.49.202:5000/api/islike/${user.LibraryID}`,{
+      headers:{
+        authorization: `Bearer ${user.access_token}`
+      }
+    }).then(response => response.json()).then(response => {
+      setaliked(response.aliked);
+    }).catch(e =>{
+        nav('/');
+    })
+
+    fetch(`http://13.235.49.202:5000/api/countlike`,{
+      headers:{
+        authorization: `Bearer ${user.access_token}`
+      }
+    }).then(response => response.json()).then(response => {
+      setlike(response.count);
+    }).catch(e =>{
+        nav('/');
+    })
+    fetch(`http://13.235.49.202:5000/api/views`,{
+      headers:{
+        authorization: `Bearer ${user.access_token}`
+      }
+    }).then(response => response.json()).then(response => {
+      setviews(response.count);
+    }).catch(e =>{
         nav('/');
     })
   }
@@ -62,14 +106,20 @@ const Dashboard = () => {
         <MDBRow>
           <MDBCol
             xs="12"
-            sm="4"
-            md="4"
-            lg="4"
-            xl="4"
-            xxl="4"
+            sm="6"
+            md="6"
+            lg="6"
+            xl="6"
+            xxl="6"
             id="info-card-col"
           >
-            <InfoCard metric={data} title="Reports available" />
+            <InfoCard metric={data} title="Reports available" button={true}/>
+            <div className="like_Card">
+              Likes: {like}
+              {aliked ?  <img src={liked} />:<img src={unlike} onClick={()=>{likeadd()}}/>}
+              Views: {views}
+            </div>
+            
           </MDBCol>
         </MDBRow>
         <MDBRow>

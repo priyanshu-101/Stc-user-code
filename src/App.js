@@ -10,6 +10,7 @@ const ReportList = React.lazy(() => import("./pages/reports/list"));
 const ReportView = React.lazy(() => import("./pages/reports/details"));
 const Feedback = React.lazy(() => import("./pages/feedback"));
 const About = React.lazy(() => import("./pages/about"));
+const Reset = React.lazy(() => import("./pages/reset"));
 
 
 function App() {
@@ -32,6 +33,11 @@ function App() {
             exact
             path="/reports/:id"
             element={<ReportView/>}
+          />
+          <Route
+            exact
+            path="/reset/:token"
+            element={<Reset/>}
           />
           <Route
             exact

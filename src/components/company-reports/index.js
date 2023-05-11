@@ -11,12 +11,19 @@ import {
 } from 'mdb-react-ui-kit';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../features/userSlice';
+import Unlike from "../../asset/unlike.svg"
+import heart from "../../asset/heart.svg"
+import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 
 const CompanyReports = ({ id }) => {
-	const [verticalActive, setVerticalActive] = useState(2022);
+	const nav = useNavigate();
+	const user = JSON.parse(localStorage.getItem("user"));
+	const [verticalActive, setVerticalActive] = useState(2023);
 	const [data, setdata] = useState({});
-	const user = useSelector(selectUser);
+	const [like, setlike] = useState(false);
+	const [likes, setlikes] = useState(0);
+	//const [views, setviews] = useState(0);
 	const handleVerticalClick = (value) => {
 		if (value === verticalActive) {
 			return;
@@ -24,22 +31,29 @@ const CompanyReports = ({ id }) => {
 		setVerticalActive(value);
 	};
 	const fetchData = async () => {
-		console.log(user.user);
-		// const response = await axios.get(`http://localhost:5000/api/companySearch/${id}/${verticalActive}`)
+		//console.log(user.user);
+		// const response = await axios.get(`http://13.235.49.202:5000/api/companySearch/${id}/${verticalActive}`)
 		const response = await axios.get(
-			`http://localhost:5000/api/companySearch/${id}/${verticalActive}`
+			`http://13.235.49.202:5000/api/companySearch/${id}/${verticalActive}`,{
+				headers:{
+					authorization: `Bearer ${user.access_token}`
+				  }
+			}
 		);
 		setdata(response.data.data);
 	};
 	useEffect(async () => {
-		console.log(id, verticalActive);
+		if(!user){
+			nav('/');
+		   }
+		//console.log(id, verticalActive);
 		//await fetchData();
 		fetchData();
-		console.log('A', data);
-		console.log('hi');
+		// console.log('A', data);
+		// console.log('hi');
 	}, [verticalActive]);
 
-	console.log('B', data);
+	//console.log('B', data);
 	return (
 		<>
 			<MDBRow>
@@ -57,13 +71,18 @@ const CompanyReports = ({ id }) => {
 						<MDBTabsItem>
 							<MDBTabsLink
 								className="details-tab"
-								onClick={() => handleVerticalClick(2021)}
-								active={verticalActive === 2021}
+								onClick={() => handleVerticalClick(2023)}
+								active={verticalActive === 2023}
 							>
-								2021
+								2023
 							</MDBTabsLink>
 						</MDBTabsItem>
 					</MDBTabs>
+				    {/* <div className='like_content_details'>
+					{like ? <img className="like_button" onClick={()=>dislike()} src={heart}/>: <img className="like_button"  onClick={()=>Like()} src={Unlike}/>}<br/>
+					<p className='likes_content'>Likes: {likes} <br/>
+					</p>
+					</div> */}
 				</MDBCol>
 				<MDBCol size="9">
 					<MDBTabsContent>
@@ -113,61 +132,75 @@ const CompanyReports = ({ id }) => {
 									</div>}
 									<br />
 									{data.companyFirstRoundDescrip != 'NA' &&
-										data.companyFirstRoundDescrip != 'N/A'&& data.companyFirstRoundDescrip && (
+										data.companyFirstRoundDescrip != 'N/A'&&data.companyFirstRoundDescrip != ' ' && data.companyFirstRoundDescrip && (
 											<div>
 												<b>{data.companyFirstRoundName}</b> :{' '}
 												<span>Duration : {data.companyFirstRoundDuration}</span>
 												<br />
-												<span>{data.companyFirstRoundDescrip}</span>
-												<br />{' '}
+												{/* <span>{data.companyFirstRoundDescrip}</span>
+												<br />{' '} */}
+												
+												{/* {console.log(data.companyFirstRoundDescrip)} */}
+												<span>{data.companyFirstRoundDescrip.split("\r\n").map((e,key)=>{
+													return [<div>{e}</div>]
+												})}</span><br/>
 											</div>
 										)}
 
 									{data.companySecondRoundDescrip != 'NA' &&
-										data.companySecondRoundDescrip != 'N/A'&& data.companySecondRoundDescrip && (
+										data.companySecondRoundDescrip != 'N/A'&&data.companySecondRoundDescrip != ' ' && data.companySecondRoundDescrip && (
 											<div>
 												<b>{data.companySecondRoundName}</b> :{' '}
-												{data.companySecondRoundDuration != 'NA' && data.companySecondRoundDuration != 'N/A' && <span>
+												{data.companySecondRoundDuration != 'NA' && data.companySecondRoundDuration != 'N/A' && data.companySecondRoundDuration != ' ' && <span>
 													Duration : {data.companySecondRoundDuration}
 												</span>}
 												<br />
-												<span>{data.companySecondRoundDescrip}</span>
-												<br />{' '}
+												<span>{data.companySecondRoundDescrip.split("\r\n").map((e,key)=>{
+													return [<div>{e}</div>]
+												})}</span>
+												
 											</div>
 										)}
 									<br />
 									{data.companyThirdRoundDescrip != 'NA' &&
-										data.companyThirdRoundDescrip != 'N/A' && data.companyThirdRoundDescrip && (
+										data.companyThirdRoundDescrip != 'N/A' &&
+										data.companyThirdRoundDescrip != ' ' && data.companyThirdRoundDescrip && (
 											<div>
 												<b>{data.companyThirdRoundName}</b> :{' '}
-												{data.companyThirdRoundDuration != 'NA' && data.companyThirdRoundDuration != 'N/A' && <span>
+												{data.companyThirdRoundDuration != 'NA' && data.companyThirdRoundDuration != 'N/A' && data.companyThirdRoundDuration != ' ' && <span>
 													Duration : {data.companyThirdRoundDuration}
 												</span>}
 												<br />
-												<span>{data.companyThirdRoundDescrip}</span>
-												<br />{' '}
+												<span>{data.companyThirdRoundDescrip.split("\r\n").map((e,key)=>{
+													return [<div>{e}</div>]
+												})}</span>
+												
 											</div>
 										)}
 									<br />
 									{data.companyFourthRoundDescrip != 'NA' &&
-										data.companyFourthRoundDescrip != 'N/A' && data.companyFourthRoundDescrip&& (
+										data.companyFourthRoundDescrip != 'N/A' && data.companyFourthRoundDescrip != ' ' && data.companyFourthRoundDescrip&& (
 											<div>
 												<b>{data.companyFourthRoundName}</b> :{' '}
-												{data.companyFourthRoundDuration != 'NA' && data.companyFourthRoundDuration != 'N/A' && <span>
+												{data.companyFourthRoundDuration != 'NA' && data.companyFourthRoundDuration != 'N/A' && data.companyFourthRoundDuration != ' ' && data.companyFourthRoundDuration && <span>
 													Duration : {data.companyFourthRoundDuration}
 												</span>}
-												<br />
-												<span>{data.companyFourthRoundDescrip}</span>
-												<br />{' '}
+												<br/>
+												<span>{data.companyFourthRoundDescrip.split("\r\n").map((e,key)=>{
+													return [<div>{e}</div>]
+												})}</span>
+												
 											</div>
 										)}
 									<br />
 									{data.companyAdditionalRoundDescrip != 'NA' &&
-										data.companyAdditionalRoundDescrip != 'N/A' && data.companyAdditionalRoundDescrip && (
+										data.companyAdditionalRoundDescrip != 'N/A' && data.companyAdditionalRoundDescrip != ' ' && data.companyAdditionalRoundDescrip && (
 											<div>
 												<b>Additional Round</b> : <br />
-												<span>{data.companyAdditionalRoundDescrip}</span>
-												<br />{' '}
+												<span>{data.companyAdditionalRoundDescrip.split("\r\n").map((e,key)=>{
+													return [<p>{e}</p>]
+												})}</span>
+												
 											</div>
 										)}
 								</>

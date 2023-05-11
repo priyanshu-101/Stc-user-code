@@ -70,7 +70,7 @@
     flex-direction: column;  
   }
 }
-input{
+input,select{
   
   border: 1px solid #{$accent};
   border-radius: 1.5rem;
@@ -87,4 +87,9 @@ input:focus{
   @include sm {
     flex-direction: column;  
   }
+}
+.pagination{
+  width: max-content;
+  margin: auto;
+  justify-content: space-around;
 }

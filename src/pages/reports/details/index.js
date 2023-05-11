@@ -26,7 +26,7 @@ const ReportList = () => {
       let response;
        
       const check = () =>{
-        console.log(data)
+        //console.log(data)
       }
       return (
         <>

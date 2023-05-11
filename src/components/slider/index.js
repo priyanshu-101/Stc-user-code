@@ -44,7 +44,7 @@ const ReportsSlider = ({ images = [] }) => {
   return (
     <>
       <Slider {...settings}>
-        {images.map((i) => {
+        {images.map((i,key) => {
           return (
             <div className="slider-div">
               <img className="slider-img" src={i.src} alt={i.caption}></img>
