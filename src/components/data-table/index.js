@@ -13,23 +13,11 @@ import { selectUser } from "../../features/userSlice";
 const DataTable = ({
 	columns = [],
 	rows = [],
-	pagination = { page: 1, perPage: 15, total: 35 },
+	indexOfFirstPost
 }) => {
   const nav = useNavigate();
   const user = useSelector(selectUser)
   
-	const paginationArr = [];
-	const processPagination = () => {
-		const availablePages = Math.ceil(pagination.total / pagination.perPage);
-		for (let i = 0; i < availablePages; i++) {
-			paginationArr.push(
-				<MDBPaginationItem>
-					<MDBPaginationLink href="#">{i + 1}</MDBPaginationLink>
-				</MDBPaginationItem>
-			);
-		}
-	};
-	processPagination();
 
 	return (
 		<>
@@ -38,7 +26,7 @@ const DataTable = ({
 					<>
 						<MDBTableHead className="table-head">
 							<tr>
-								{columns.map((c) => {
+								{columns.map((c,key) => {
 									return <th scope="col">{c.title}</th>;
 								})}
 							</tr>
@@ -48,7 +36,7 @@ const DataTable = ({
 								return (
 									<tr className="table-row">
 										{[
-											<td>{index + 1}</td>,
+											<td>{index + 1 + indexOfFirstPost}</td>,
 											Object.values(r).map((data, index) => {
 												if (index != 0) {
 													return <td>{data}</td>;

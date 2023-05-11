@@ -1,0 +1,88 @@
+@import "../../mixins";
+@import "../../common";
+
+.form-container {
+  height: 100vh;
+  //width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: #{$primary};
+  //align-items: center;
+  @include sm {
+    display: flex;
+    justify-content: center;
+    //align-items: center;
+    height: 100vh;
+  }
+  }
+
+.stclogo{
+  height: 7rem;
+  @include sm {
+    height: 3rem;
+  }
+ 
+}
+.kietlogo{
+  height: 7rem;
+  @include sm {
+    margin-right: 10rem;
+    height: 5rem;
+  }
+}
+.info_toggle{
+  position: fixed;
+  bottom: 4rem;
+  // right: 2rem;
+  margin: auto;
+  height: 2rem;
+  z-index: 3000;
+  padding: 0 1rem;
+  border: 2px solid white;
+  width: max-content;
+  
+  // background-color: green;
+  color: white;
+  div{
+      font-weight: 900;
+  };
+}
+.info{
+  position: fixed;
+  bottom: 5rem;
+  // right: 2.4rem;
+  margin: auto;
+  visibility: none;
+  // border: 2px solid #{$btn-primary};
+  height: 1vh;
+  width: 1vw;
+  z-index: 3;
+  border-bottom-right-radius: 0;
+  transition: width 0.1s, height 0.1s;
+  
+  background-color: rgb(27, 98, 27);
+}
+.info_display{
+  height: 60vh;
+  width: 70vw;
+  z-index: 3;
+  // right: 2rem;
+  margin: auto;
+  transition: width 0.1s, height 0.1s;
+  background: rgba(255, 255, 255, 0.6);
+    overflow: scroll;
+    backdrop-filter: blur(5px);
+    text-align: justify;
+  text-justify: inter-word;
+  color: black;
+  padding: 2rem;
+  h4{
+    width: fit-content;
+    font-weight: 1000;
+    font-size: 2rem;
+    margin: auto;
+  }
+} 
+li{
+  font-weight: 600;
+}

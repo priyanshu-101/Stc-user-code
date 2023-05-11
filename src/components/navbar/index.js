@@ -27,7 +27,7 @@ const Navbar = () => {
   const nav = useNavigate();
   const logout = () =>{
        localStorage.removeItem("user");
-       console.log(JSON.parse(localStorage.getItem("user")))
+       //console.log(JSON.parse(localStorage.getItem("user")))
        nav('/')
   }
   // const dispatch = useDispatch

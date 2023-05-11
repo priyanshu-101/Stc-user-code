@@ -25,12 +25,12 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom"
 
 import { useState } from "react";
+import Pagination from "../../../components/Pagination";
 
   
   const ReportList = () => {
+    
     const nav = useNavigate();
-    // const user = useSelector(selectUser);
-    // console.log(user)
     const columns = [
       {
         title: "#",
@@ -79,49 +79,60 @@ import { useState } from "react";
         ),
       },
     ];
-    const [data,setdata] = useState({});
+    const [data,setdata] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
     const [search,setsearch]= useState("");
     const [CTC,setCTC]= useState(0);
     const [division, setdivision]=useState(1);
-    const companydiv = ["MAJOR","ELITE","CORE","OTHERS"];
+    const companydiv = ["MAJOR","CORE","ELITE","OTHERS"];
     const user = JSON.parse(localStorage.getItem("user"));
+    const ctc = [5,8,12,15,18,20,25,28,34,40,45];
+    const handleChange = (event) => {
+
+      setCTC(event.target.value);
+   
+    };
     async function fetchData(){
       if(search == "" && CTC == 0)
       {
-        fetch(`http://localhost:5000/api/company/${division}`,{
+        fetch(`http://13.235.49.202:5000/api/company/${division}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})
       }
       else if(CTC == 0){
-        fetch(`http://localhost:5000/api/companyNameSearch/${search}`,{
+        fetch(`http://13.235.49.202:5000/api/companyNameSearch/${search}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})
       }
       else if(CTC > 0)
       {
-        fetch(`http://localhost:5000/api/companyCTCSearch/${CTC}`,{
+        fetch(`http://13.235.49.202:5000/api/companyCTCSearch/${CTC}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})
       }
-      
     }
     useEffect(async() => {
-      
-      // if(!user){
-      //  nav("/")
-      // }
-      //setdivision(1);
+      if(!user){
+        nav('/');
+       }
       await fetchData();
-      
+      setCurrentPage(1);
       return () => {
         setdata({});
       }
      }, [division,search,CTC])
     
+     const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost); 
     
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
     const images = [
       {
         src: accentureLogo,
@@ -209,7 +220,7 @@ import { useState } from "react";
                 setdivision(2);
               }}
             >
-              ELITE
+              CORE
             </div>
             <div
               xs="12"
@@ -225,7 +236,7 @@ import { useState } from "react";
                 setdivision(3);
               }}
             >
-             CORE
+             ELITE
             </div>
             <div
               xs="12"
@@ -256,14 +267,25 @@ import { useState } from "react";
               className="d-grid gap-3"
             >
               <div className="info_filter">
-              {search=="" && CTC == 0 ? <span className="table-header">{companydiv[division-1]}</span>: null}
+              <span className="table-header">{search=="" && CTC == 0 ? companydiv[division-1]: "      "}</span>
               <div className="filter">
               <input type="text" placeholder="Search Company" onChange={(e)=>{setCTC(0); setsearch(e.target.value)}} value={search}/>
-              <input type="Number" placeholder="Search BY CTC" onChange={(e)=>{setsearch("") ; setCTC(e.target.value)}} value={CTC>0 && CTC}/>
+              <select value={CTC} onChange={handleChange}>
+              <option value={0}>Search BY CTC</option>
+              {ctc.map((ctc,key)=>{
+                 return <option value={ctc}>{ctc}+ LPA</option>
+              })}
+
+       </select>
               </div>
               </div>
-              {/* <span className="table-header">sdf,{console.log(companydiv[division-1])}</span> */}
-              <DataTable rows={data} columns={columns} />
+                <DataTable rows={currentPosts} indexOfFirstPost={indexOfFirstPost} columns={columns} />
+                <Pagination className="pagination"
+        postsPerPage={postsPerPage}
+        totalPosts={data.length}
+        paginate={paginate}
+        currentPage = {currentPage}
+      />
             </MDBCol>
           </MDBRow>
         </MDBContainer>

@@ -14,6 +14,7 @@
   .login-form-group {
     margin: auto;
     width: 100%;
+    //color: white !important;
     @include md {
       display: flex;
       justify-content: center;
@@ -38,7 +39,7 @@
     }
 
     .form-outline .form-control:focus ~ .form-label {
-      color: #{$btn-primary};
+      color: #fff;
     }
     .form-outline {
       width: 100%;
@@ -57,7 +58,18 @@
   }
 }
 a{
-  color: white
+  color: white;
+}
+.links{
+  display:flex ;
+  justify-content: space-between ;
+  //border: 2px solid black;
+  @include md {
+    //justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
 }
 
 

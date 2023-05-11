@@ -15,28 +15,50 @@ const LoginForm = () => {
     
     const dispatch = useDispatch();
     const user = useSelector(selectUser)
-  
+    const sendRequest =async(e) =>{
+      e.preventDefault();
+      if(email==="")
+      {
+        alert("Enter KIET ID");
+        return;
+      }
+      else 
+      {
+        try{
+          //console.log("reset ke ander" )
+          await axios.get(`http://13.235.49.202:5000/api/requestResetPassword/${email}`);
+          alert("Reset link share with your KIET ID");
+        }catch(e)
+           {
+            //console.log(e);
+            alert("Internal Server Error. Try Again later")
+           }
+        {
+
+        }
+      }
+    }
     const handleSubmit = async (e) =>{
         e.preventDefault();
         // console.log(user)
         //console.log(password, email);
         try{
-          const response = await axios.post('http://localhost:5000/api/login', {
+          const response = await axios.post('http://13.235.49.202:5000/api/login', {
             LibraryID:email,
             Password:password
           })
-          console.log(response.data.access_token);
+          //console.log(response.data.access_token);
           localStorage.setItem("user",JSON.stringify({
               access_token: response.data.access_token,
               isLoggedIn : true,
               LibraryID: email 
           }))
-          console.log("HI")
-          console.log(localStorage.getItem("user"))
-          console.log("me")
+          // console.log("HI")
+          // console.log(localStorage.getItem("user"))
+          // console.log("me")
           nav("/dashboard");
         }catch(e){
-          console.log(e)
+          //console.log(e)
           alert("Wrong Email or Password");
         }
     }
@@ -48,7 +70,7 @@ const LoginForm = () => {
       </div>
       <form className="login-form">
         <MDBInputGroup className="login-form-group">
-          <MDBInput label="KIET Library ID" type="email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
+          <MDBInput label="KIET ID" type="email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
         </MDBInputGroup>
 
         <MDBInputGroup className="login-form-group">
@@ -59,10 +81,14 @@ const LoginForm = () => {
           <MDBBtn onClick={(e)=> handleSubmit(e)} className=" btn-block login-form-btn">
             Login
           </MDBBtn>
-
-          <a href = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=mickuraj.gzb@gmail.com" target="_blank">
+<div className="w-100 links">
+          <a href = "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=stc@kiet.edu" target="_blank">
           Troubleshooting?
 </a>
+<a href="" onClick={(e)=>{sendRequest(e)}}> 
+          Forget Password?
+</a>
+</div>
         </MDBInputGroup>
         
       </form>

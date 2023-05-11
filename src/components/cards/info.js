@@ -6,10 +6,10 @@ import {
   MDBBtn,
   MDBIcon,
 } from "mdb-react-ui-kit";
-
+import like_logo from "../../asset/unlike.svg"
 import "./styles.scss";
 
-const Info = ({ metric = 0, title = "Title" }) => {
+const Info = ({ metric = 0, title = "Title" , button}) => {
   return (
     <>
       <MDBCard className="info-card primary-bg text-white">
@@ -18,7 +18,9 @@ const Info = ({ metric = 0, title = "Title" }) => {
             <MDBCardTitle className="card-text-title">{metric}</MDBCardTitle>
             <MDBCardText className="card-text-description">{title}</MDBCardText>
           </div>
-          <div className="card-action">
+          
+          
+         <div className="card-action">
             <MDBBtn className="card-action-btn" href="/reports">
               View Reports <MDBIcon fas icon="angle-right" />
             </MDBBtn>

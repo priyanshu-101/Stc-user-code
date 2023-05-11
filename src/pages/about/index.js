@@ -132,7 +132,7 @@ const About = () => {
                 
                 
                 <img src="https://ui-avatars.com/api/?name=Priya+Rastogi" alt=""/>
-                <h4>Mrs. Priya Rohatgi</h4>
+                <h4>Mrs. Puja Rohatgi</h4>
                 <p>Addt. HOD HSS</p>
             </div>
             <div class="names">
@@ -193,7 +193,7 @@ const About = () => {
             </div>
         </div>
         <div class="mem-core">
-            <div class="names">
+            {/* <div class="names">
                 <div class="mem-img">
                 <img src="https://ui-avatars.com/api/?name=Akhil Raj Srivastava" alt=""/>
                 </div>
@@ -201,7 +201,7 @@ const About = () => {
                 <h4>Akhil Raj Srivastava</h4>
                 <p>Technical Team</p>
             </div>
-            </div>
+            </div> */}
             <div class="names">
                 <div class="mem-img">
                 <img src="https://ui-avatars.com/api/?name=Avantika Gupta" alt=""/>
@@ -288,7 +288,7 @@ const About = () => {
               <MDBListGroupItem className="bg-light">
                 <div className="d-flex flex-column w-100 justify-content-between">
                   <h6 className="mb-1 fw-bold">Mr. Archit Rastogi</h6>
-                  <small>Information Technology (2016-2020)</small>
+                  <small>Information Institutions (2016-2020)</small>
                 </div>
               </MDBListGroupItem>
               <MDBListGroupItem className="bg-light">
@@ -335,7 +335,7 @@ const About = () => {
               <MDBListGroupItem className="bg-light">
                 <div className="d-flex flex-column w-100 justify-content-between">
                   <h6 className="mb-1 fw-bold">Mr. Archit Rastogi</h6>
-                  <small>Information Technology (2016-2020)</small>
+                  <small>Information Institutions (2016-2020)</small>
                 </div>
               </MDBListGroupItem>
               <MDBListGroupItem className="bg-light">
@@ -397,7 +397,7 @@ export default About;
 // import axios from "axios";
 // import { useSelector } from "react-redux";
 // import { selectUser } from "../../features/userSlice";
-// const baseURL = "http://localhost:5000/dashboard";
+// const baseURL = "http://13.235.49.202:5000/dashboard";
 // let obj = 0;
 // const About = () => {
 //   const [data, setdata] = useState(null);
@@ -407,7 +407,7 @@ export default About;
 //   const fetchData = async()=>{
 //     console.log(user);
 //     // console.log("d",user.access_token)
-//     fetch('http://localhost:5000/api/count',{
+//     fetch('http://13.235.49.202:5000/api/count',{
 //       headers:{
 //         authorization: `Bearer ${user.access_token}`
 //       }

@@ -18,3 +18,26 @@
     overflow-y: scroll;
   }
 }
+.like_button{
+  height: 2.5rem;
+  margin: 2rem auto 0 auto;
+  transition: 5s ease-in;
+}
+.likes_content{
+font-family:Arial, Helvetica, sans-serif;
+font-size: 1.2rem;
+line-height: 1.8rem;
+margin-top: 1rem;
+font-weight:bolder;
+}
+.like_content_details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p{
+    margin: auto;
+  }
+}
+// span{
+//   margin-left: 1.2rem;
+// }
