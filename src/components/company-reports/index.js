@@ -19,17 +19,32 @@ import './styles.scss';
 const CompanyReports = ({ id }) => {
 	const nav = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
-	const [verticalActive, setVerticalActive] = useState(2023);
+    const [available, setavailable] = useState([2023]);
+	const [verticalActive, setVerticalActive] = useState(available[0]);
 	const [data, setdata] = useState({});
 	const [like, setlike] = useState(false);
 	const [likes, setlikes] = useState(0);
 	//const [views, setviews] = useState(0);
 	const handleVerticalClick = (value) => {
+		console.log("HI", value);
 		if (value === verticalActive) {
 			return;
 		}
 		setVerticalActive(value);
 	};
+	const availability = async()=>{
+		const response = await axios.get(`http://13.235.49.202:5000/api/company/available/${id}`)
+		//console.log(response.data.data)
+
+        const data = response.data.data.map((d)=>{
+			return d.companyReportYear;
+		})
+	    if(data.length > 0)
+	    {
+			setavailable(data);
+			
+		}
+	}
 	const fetchData = async () => {
 		//console.log(user.user);
 		// const response = await axios.get(`http://13.235.49.202:5000/api/companySearch/${id}/${verticalActive}`)
@@ -48,6 +63,9 @@ const CompanyReports = ({ id }) => {
 		   }
 		//console.log(id, verticalActive);
 		//await fetchData();
+		await availability();
+		console.log(available[0]);
+		setVerticalActive(available[0]);
 		fetchData();
 		// console.log('A', data);
 		// console.log('hi');
@@ -59,45 +77,27 @@ const CompanyReports = ({ id }) => {
 			<MDBRow>
 				<MDBCol size="3">
 					<MDBTabs className="flex-column text-center">
-						<MDBTabsItem>
+						{
+							available.map((data,index) => {
+								//console.log(data);
+								return <MDBTabsItem key={index}>
 							<MDBTabsLink
+				                
 								className="details-tab"
-								onClick={() => handleVerticalClick(2022)}
-								active={verticalActive === 2022}
+								onClick={() => handleVerticalClick(data)}
+								active={verticalActive == data}
 							>
-								2022
+								{data}
 							</MDBTabsLink>
 						</MDBTabsItem>
-						<MDBTabsItem>
-							<MDBTabsLink
-								className="details-tab"
-								onClick={() => handleVerticalClick(2023)}
-								active={verticalActive === 2023}
-							>
-								2023
-							</MDBTabsLink>
-						</MDBTabsItem>
+							})
+						}
 					</MDBTabs>
-				    {/* <div className='like_content_details'>
-					{like ? <img className="like_button" onClick={()=>dislike()} src={heart}/>: <img className="like_button"  onClick={()=>Like()} src={Unlike}/>}<br/>
-					<p className='likes_content'>Likes: {likes} <br/>
-					</p>
-					</div> */}
 				</MDBCol>
 				<MDBCol size="9">
 					<MDBTabsContent>
-						<div className="details-pane" show={verticalActive === 'tab1'}>
-							{/* {data ? (
-								Object.keys(data).map((e, index) => (
-									<div key={index}>
-										<u><b>{e}: </b></u>
-										<span>{data[e]}</span>
-										<br />
-									</div>
-								))
-							) : (
-								<div>No data Available</div>
-							)} */}
+						
+						<div className="details-pane" >
 							<div className="company-logo">
         {/* <img src="https://drive.google.com/file/d/1ThJ8vuuysy3Pczo1IciAxleVvlWk1CiG/view?usp=sharing" alt="dfs"/> */}
 		<img src={`https://drive.google.com/uc?export=view&id=${data.ImageID}`} alt={`${data.companyName}`}/>
@@ -106,6 +106,10 @@ const CompanyReports = ({ id }) => {
 								<>
 									{data.companyName && <div>
 										<b>Company Name</b> : <span>{data.companyName}</span>
+									</div>}
+									<br />
+									{data.companyDescription && <div>
+										<b>Company Description</b> : <span>{data.companyDescription}</span>
 									</div>}
 									<br />
 									{ data.companyWebsite && <div>
@@ -142,7 +146,7 @@ const CompanyReports = ({ id }) => {
 												
 												{/* {console.log(data.companyFirstRoundDescrip)} */}
 												<span>{data.companyFirstRoundDescrip.split("\r\n").map((e,key)=>{
-													return [<div>{e}</div>]
+													return [<div key={key}>{e}</div>]
 												})}</span><br/>
 											</div>
 										)}
@@ -156,7 +160,7 @@ const CompanyReports = ({ id }) => {
 												</span>}
 												<br />
 												<span>{data.companySecondRoundDescrip.split("\r\n").map((e,key)=>{
-													return [<div>{e}</div>]
+													return [<div key={key}>{e}</div>]
 												})}</span>
 												
 											</div>
@@ -172,7 +176,7 @@ const CompanyReports = ({ id }) => {
 												</span>}
 												<br />
 												<span>{data.companyThirdRoundDescrip.split("\r\n").map((e,key)=>{
-													return [<div>{e}</div>]
+													return [<div key={key}>{e}</div>]
 												})}</span>
 												
 											</div>
@@ -187,7 +191,7 @@ const CompanyReports = ({ id }) => {
 												</span>}
 												<br/>
 												<span>{data.companyFourthRoundDescrip.split("\r\n").map((e,key)=>{
-													return [<div>{e}</div>]
+													return [<div key={key}>{e}</div>]
 												})}</span>
 												
 											</div>
@@ -198,7 +202,7 @@ const CompanyReports = ({ id }) => {
 											<div>
 												<b>Additional Round</b> : <br />
 												<span>{data.companyAdditionalRoundDescrip.split("\r\n").map((e,key)=>{
-													return [<p>{e}</p>]
+													return [<p key={key}>{e}</p>]
 												})}</span>
 												
 											</div>

@@ -198,6 +198,7 @@ import Pagination from "../../../components/Pagination";
               xl="12"
               xxl="12"
               id="reports-col"
+              className={division == 1 ? "report-col-active": null}
               onClick = {()=> {
                 setsearch("");
                 setCTC(0);
@@ -214,6 +215,7 @@ import Pagination from "../../../components/Pagination";
               xl="12"
               xxl="12"
               id="reports-col"
+              className={division == 2 ? "report-col-active": null}
               onClick = {()=> {
                 setsearch("");
                 setCTC(0);
@@ -230,6 +232,7 @@ import Pagination from "../../../components/Pagination";
               xl="12"
               xxl="12"
               id="reports-col"
+              className={division == 3 ? "report-col-active": null}
               onClick = {()=> {
                 setsearch("");
                 setCTC(0);
@@ -246,6 +249,7 @@ import Pagination from "../../../components/Pagination";
               xl="12"
               xxl="12"
               id="reports-col"
+              className={division == 4 ? "report-col-active": null}
               onClick = {()=> {
                 setsearch("");
                 setCTC(0);
@@ -273,7 +277,7 @@ import Pagination from "../../../components/Pagination";
               <select value={CTC} onChange={handleChange}>
               <option value={0}>Search BY CTC</option>
               {ctc.map((ctc,key)=>{
-                 return <option value={ctc}>{ctc}+ LPA</option>
+                 return <option key={key} value={ctc}>{ctc}+ LPA</option>
               })}
 
        </select>

@@ -27,19 +27,19 @@ const DataTable = ({
 						<MDBTableHead className="table-head">
 							<tr>
 								{columns.map((c,key) => {
-									return <th scope="col">{c.title}</th>;
+									return <th key={key} scope="col">{c.title}</th>;
 								})}
 							</tr>
 						</MDBTableHead>
 						<MDBTableBody className="table-body">
 							{rows.map((r, index) => {
 								return (
-									<tr className="table-row">
+									<tr className="table-row"  key={index}>
 										{[
 											<td>{index + 1 + indexOfFirstPost}</td>,
 											Object.values(r).map((data, index) => {
 												if (index != 0) {
-													return <td>{data}</td>;
+													return <td  key={index}>{data}</td>;
 												}
 											}),
 											<td>

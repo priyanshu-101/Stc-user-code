@@ -46,7 +46,7 @@ const ReportsSlider = ({ images = [] }) => {
       <Slider {...settings}>
         {images.map((i,key) => {
           return (
-            <div className="slider-div">
+            <div className="slider-div" key={key}>
               <img className="slider-img" src={i.src} alt={i.caption}></img>
               {i.showCaption ? (
                 <h3 className="slider-caption">{i.caption}</h3>
