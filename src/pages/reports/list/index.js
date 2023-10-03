@@ -96,20 +96,20 @@ import Pagination from "../../../components/Pagination";
     async function fetchData(){
       if(search == "" && CTC == 0)
       {
-        fetch(`http://13.235.49.202:5000/api/company/${division}`,{
+        fetch(`http://localhost:5000/api/company/${division}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})
       }
       else if(CTC == 0){
-        fetch(`http://13.235.49.202:5000/api/companyNameSearch/${search}`,{
+        fetch(`http://localhost:5000/api/companyNameSearch/${search}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})
       }
       else if(CTC > 0)
       {
-        fetch(`http://13.235.49.202:5000/api/companyCTCSearch/${CTC}`,{
+        fetch(`http://localhost:5000/api/companyCTCSearch/${CTC}`,{
         headers:{
           authorization: `Bearer ${user.access_token}`
         }}).then(response => response.json()).then(response => {setdata(response.data)})

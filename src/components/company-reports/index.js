@@ -19,7 +19,7 @@ import './styles.scss';
 const CompanyReports = ({ id }) => {
 	const nav = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
-    const [available, setavailable] = useState([2023]);
+    const [available, setavailable] = useState([2024]);
 	const [verticalActive, setVerticalActive] = useState(available[0]);
 	const [data, setdata] = useState({});
 	const [like, setlike] = useState(false);
@@ -42,6 +42,7 @@ const CompanyReports = ({ id }) => {
 	    if(data.length > 0)
 	    {
 			setavailable(data);
+			console.log(available[0]);
 			
 		}
 	}
@@ -64,9 +65,10 @@ const CompanyReports = ({ id }) => {
 		//console.log(id, verticalActive);
 		//await fetchData();
 		await availability();
-		console.log(available[0]);
 		setVerticalActive(available[0]);
-		fetchData();
+		console.log("abc",available[0]);
+		
+		await fetchData();
 		// console.log('A', data);
 		// console.log('hi');
 	}, [verticalActive]);

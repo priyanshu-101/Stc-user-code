@@ -92,6 +92,15 @@ const Navbar = () => {
                   AboutUS
                 </MDBNavbarLink>
               </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink
+                  
+                  className="text-white"
+                  href="/previousyear"
+                >
+                  Previous Year
+                </MDBNavbarLink>
+              </MDBNavbarItem>
             </MDBNavbarNav>
             <MDBDropdown>
               <MDBDropdownToggle className="text-light nav-link" tag="a">

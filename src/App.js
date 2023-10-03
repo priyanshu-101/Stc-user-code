@@ -8,6 +8,8 @@ const Login = React.lazy(() => import("./pages/auth/login"));
 const Dashboard = React.lazy(() => import("./pages/dashboard"));
 const ReportList = React.lazy(() => import("./pages/reports/list"));
 const ReportView = React.lazy(() => import("./pages/reports/details"));
+const PreviousOA = React.lazy(() => import("./pages/previousyear"));
+const PreviousQuestion = React.lazy(() => import("./pages/previousyearquestion"));
 const Feedback = React.lazy(() => import("./pages/feedback"));
 const About = React.lazy(() => import("./pages/about"));
 const Reset = React.lazy(() => import("./pages/reset"));
@@ -33,6 +35,16 @@ function App() {
             exact
             path="/reports/:id"
             element={<ReportView/>}
+          />
+          <Route
+            exact
+            path="/previousyear"
+            element={<PreviousOA/>}
+          />
+          <Route
+            exact
+            path="/previousyear/:id"
+            element={<PreviousQuestion/>}
           />
           <Route
             exact

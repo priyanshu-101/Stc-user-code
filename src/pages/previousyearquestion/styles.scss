@@ -1,0 +1,13 @@
+@import "../../common";
+@import "../../breakpoints";
+@import "../../mixins";
+
+h1{
+    margin: 5vh 2vw;
+}
+.Question-Column{
+    border-radius: 20px;
+    margin: 0 2rem;
+    border: 2px solid #{$accent};
+    padding: 20px 20px
+}
