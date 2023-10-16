@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
-const baseURL = "http://13.235.49.202:5000/dashboard";
+const baseURL = "http://13.235.49.202/dashboard";
 
 const Dashboard = () => {
   const [data, setdata] = useState(null);
@@ -23,7 +23,7 @@ const Dashboard = () => {
   const likeadd = () =>{
     setlike(like+1);
     setaliked(!aliked);
-    fetch(`http://13.235.49.202:5000/api/like/${user.LibraryID}`,{
+    fetch(`http://13.235.49.202/api/like/${user.LibraryID}`,{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }
@@ -36,14 +36,14 @@ const Dashboard = () => {
     })
   }
   const fetchData = async()=>{
-    fetch('http://13.235.49.202:5000/api/count',{
+    fetch('http://13.235.49.202/api/count',{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }
     }).then(response => response.json()).then(response => {setdata(response.data[0].COUNT)}).catch(e =>{
         nav('/');
     })
-    fetch(`http://13.235.49.202:5000/api/islike/${user.LibraryID}`,{
+    fetch(`http://13.235.49.202/api/islike/${user.LibraryID}`,{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }
@@ -53,7 +53,7 @@ const Dashboard = () => {
         nav('/');
     })
 
-    fetch(`http://13.235.49.202:5000/api/countlike`,{
+    fetch(`http://13.235.49.202/api/countlike`,{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }
@@ -62,7 +62,7 @@ const Dashboard = () => {
     }).catch(e =>{
         nav('/');
     })
-    fetch(`http://13.235.49.202:5000/api/views`,{
+    fetch(`http://13.235.49.202/api/views`,{
       headers:{
         authorization: `Bearer ${user.access_token}`
       }

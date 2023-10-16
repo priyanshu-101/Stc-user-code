@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import ReactToPrint from 'react-to-print';
 import './styles.scss';
 import Navbar from '../../components/navbar';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 const PreviousQuestion = () => {
   const { id} = useParams();
-  const companyName = "Gemini Solutions"
   const [questions, setquestions] = useState([]);
   useEffect(async()=>{
-    const data = await fetch(`http://localhost:5000/api/CompanyQuestion`)
+    const data = await fetch(`http://13.235.49.202/api/CompanyQuestion/${id}`)
     const data1 = await data.json();
     console.log(data1);
     setquestions(data1.data);
@@ -28,18 +28,26 @@ const PreviousQuestion = () => {
   return (
     <>
       <Navbar/>
-      <h1>{companyName}</h1>
-      <div className='Question-Column'>
+      <ReactToPrint
+        trigger={()=>{
+          return <button>Print</button>
+        }}
+        content={()=>this.componentRef}
+        pageStyle="print"
+      />
+      <h1>{questions[0]?.Company}</h1>
+
+      <div ref={el=>(this.componentRef=el)} className='Question-Column'>
         {questions.map((data,key)=>{
           return <div>
           <h5><b>Q{key+1}</b> {data.Question}</h5>
           <div>
-            {/* {console.log(JSON.parse(data.Options))} */}
-            {/* {data.Options && JSON.parse(data.Options).map((option,key)=>{
+
+            {data.Options && data.Options.slice(1,-1).split(',').map((option,key)=>{
               return <h6>
                  <b>{key+1}</b>: {option} <br/>
               </h6>
-            })} */}
+            })}
             {/* {console.log(data.options)} */}
           </div>
           <br/>

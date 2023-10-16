@@ -397,7 +397,7 @@ export default About;
 // import axios from "axios";
 // import { useSelector } from "react-redux";
 // import { selectUser } from "../../features/userSlice";
-// const baseURL = "http://13.235.49.202:5000/dashboard";
+// const baseURL = "http://13.235.49.202/dashboard";
 // let obj = 0;
 // const About = () => {
 //   const [data, setdata] = useState(null);
@@ -407,7 +407,7 @@ export default About;
 //   const fetchData = async()=>{
 //     console.log(user);
 //     // console.log("d",user.access_token)
-//     fetch('http://13.235.49.202:5000/api/count',{
+//     fetch('http://13.235.49.202/api/count',{
 //       headers:{
 //         authorization: `Bearer ${user.access_token}`
 //       }

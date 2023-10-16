@@ -33,7 +33,7 @@ const CompanyReports = ({ id }) => {
 		setVerticalActive(value);
 	};
 	const availability = async()=>{
-		const response = await axios.get(`http://13.235.49.202:5000/api/company/available/${id}`)
+		const response = await axios.get(`http://13.235.49.202/api/company/available/${id}`)
 		//console.log(response.data.data)
 
         const data = response.data.data.map((d)=>{
@@ -48,9 +48,9 @@ const CompanyReports = ({ id }) => {
 	}
 	const fetchData = async () => {
 		//console.log(user.user);
-		// const response = await axios.get(`http://13.235.49.202:5000/api/companySearch/${id}/${verticalActive}`)
+		// const response = await axios.get(`http://13.235.49.202/api/companySearch/${id}/${verticalActive}`)
 		const response = await axios.get(
-			`http://13.235.49.202:5000/api/companySearch/${id}/${verticalActive}`,{
+			`http://13.235.49.202/api/companySearch/${id}/${verticalActive}`,{
 				headers:{
 					authorization: `Bearer ${user.access_token}`
 				  }

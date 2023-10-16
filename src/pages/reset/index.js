@@ -32,7 +32,7 @@ import {
         }
         try{
            //console.log("HIIH")
-           await axios.post("http://13.235.49.202:5000/api/resetPassword",{
+           await axios.post("http://13.235.49.202/api/resetPassword",{
                token,
                password
            })
