@@ -30,10 +30,12 @@
 #reports-col:hover{
   background-color: #{$accent} !important;
   color: #ffffff;
+  cursor: pointer;
 }
 .report-col-active{
   background-color: #{$accent} !important;
   color: #ffffff;
+  
 }
 #reports-col {
   font-size: 25px;

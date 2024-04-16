@@ -9,7 +9,7 @@ const PreviousQuestion = () => {
   const [questions, setquestions] = useState([]);
   useEffect(async () => {
     const data = await fetch(
-      `http://13.53.175.59:5000/api/CompanyQuestion/${id}`
+      `https://free.yashv.xyz/api/CompanyQuestion/${id}`
     );
     const data1 = await data.json();
     console.log(data1);

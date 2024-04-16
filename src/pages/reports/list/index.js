@@ -17,6 +17,7 @@ import infosysLogo from "../../../asset/major/infosys.png";
 import tcsLogo from "../../../asset/major/tcs.png";
 import wiproLogo from "../../../asset/major/wipro.png";
 
+
 import "./styles.scss";
 import React, { useEffect } from "react";
 import ListService from "./service";
@@ -91,7 +92,7 @@ const ReportList = () => {
   };
   async function fetchData() {
     if (search == "" && CTC == 0) {
-      fetch(`http://13.53.175.59:5000/api/company/${division}`, {
+      fetch(`https://free.yashv.xyz/api/company/${division}`, {
         headers: {
           authorization: `Bearer ${user.access_token}`,
         },
@@ -101,7 +102,7 @@ const ReportList = () => {
           setdata(response.data);
         });
     } else if (CTC == 0) {
-      fetch(`http://13.53.175.59:5000/api/companyNameSearch/${search}`, {
+      fetch(`https://free.yashv.xyz/api/companyNameSearch/${search}`, {
         headers: {
           authorization: `Bearer ${user.access_token}`,
         },
@@ -111,7 +112,7 @@ const ReportList = () => {
           setdata(response.data);
         });
     } else if (CTC > 0) {
-      fetch(`http://13.53.175.59:5000/api/companyCTCSearch/${CTC}`, {
+      fetch(`https://free.yashv.xyz/api/companyCTCSearch/${CTC}`, {
         headers: {
           authorization: `Bearer ${user.access_token}`,
         },
@@ -161,7 +162,7 @@ const ReportList = () => {
       showCaption: false,
     },
     {
-      src: infosysLogo,
+      src: "infosysLogo",
       caption: "Infosys",
       showCaption: false,
     },
@@ -228,7 +229,7 @@ const ReportList = () => {
               setdivision(2);
             }}
           >
-            CORE
+            ENGINEERING WORKS
           </div>
           <div
             xs="12"

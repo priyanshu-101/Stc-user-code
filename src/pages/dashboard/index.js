@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
-const baseURL = "http://13.53.175.59:5000/dashboard";
+const baseURL = "https://free.yashv.xyz/dashboard";
 
 const Dashboard = () => {
   const [data, setdata] = useState(null);
@@ -24,7 +24,7 @@ const Dashboard = () => {
   const likeadd = () => {
     setlike(like + 1);
     setaliked(!aliked);
-    fetch(`http://13.53.175.59:5000/api/like/${user.LibraryID}`, {
+    fetch(`https://free.yashv.xyz/api/like/${user.LibraryID}`, {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },
@@ -42,7 +42,7 @@ const Dashboard = () => {
       });
   };
   const fetchData = async () => {
-    fetch("http://13.53.175.59:5000/api/count", {
+    fetch("https://free.yashv.xyz/api/count", {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },
@@ -54,7 +54,7 @@ const Dashboard = () => {
       .catch((e) => {
         nav("/");
       });
-    fetch(`http://13.53.175.59:5000/api/islike/${user.LibraryID}`, {
+    fetch(`https://free.yashv.xyz/api/islike/${user.LibraryID}`, {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },
@@ -67,7 +67,7 @@ const Dashboard = () => {
         nav("/");
       });
 
-    fetch(`http://13.53.175.59:5000/api/countlike`, {
+    fetch(`https://free.yashv.xyz/api/countlike`, {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },
@@ -79,7 +79,7 @@ const Dashboard = () => {
       .catch((e) => {
         nav("/");
       });
-    fetch(`http://13.53.175.59:5000/api/views`, {
+    fetch(`https://free.yashv.xyz/api/views`, {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },
@@ -105,7 +105,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://13.53.175.59:5000/api/year`, {
+    fetch(`https://free.yashv.xyz/api/year`, {
       headers: {
         authorization: `Bearer ${user.access_token}`,
       },

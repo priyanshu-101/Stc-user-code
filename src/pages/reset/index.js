@@ -31,7 +31,7 @@ const Reset = () => {
     }
     try {
       //console.log("HIIH")
-      await axios.post("http://13.53.175.59:5000/api/resetPassword", {
+      await axios.post("https://free.yashv.xyz/api/resetPassword", {
         token,
         password,
       });

@@ -24,7 +24,7 @@ const LoginForm = () => {
       try {
         //console.log("reset ke ander" )
         await axios.get(
-          `http://13.53.175.59:5000/api/requestResetPassword/${email}`
+          `http://localhost:5000/api/requestResetPassword/${email}`
         );
         alert("Reset link share with your KIET ID");
       } catch (e) {
@@ -40,7 +40,7 @@ const LoginForm = () => {
     // console.log(user)
     //console.log(password, email);
     try {
-      const response = await axios.post("http://13.53.175.59:5000/api/login", {
+      const response = await axios.post("https://free.yashv.xyz/api/login", {
         LibraryID: email,
         Password: password,
       });

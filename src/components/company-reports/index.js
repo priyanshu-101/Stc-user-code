@@ -33,7 +33,7 @@ const CompanyReports = ({ id }) => {
   };
   const availability = async () => {
     const response = await axios.get(
-      `http://13.53.175.59:5000/api/company/available/${id}`
+      `https://free.yashv.xyz/api/company/available/${id}`
     );
 
     const data = response.data.data.map((d) => {
@@ -47,7 +47,7 @@ const CompanyReports = ({ id }) => {
     //console.log(user.user);
     // const response = await axios.get(`http://13.235.49.202/api/companySearch/${id}/${verticalActive}`)
     const response = await axios.get(
-      `http://13.53.175.59:5000/api/companySearch/${id}/${verticalActive}`,
+      `https://free.yashv.xyz/api/companySearch/${id}/${verticalActive}`,
       {
         headers: {
           authorization: `Bearer ${user.access_token}`,

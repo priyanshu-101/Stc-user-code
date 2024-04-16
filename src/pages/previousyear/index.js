@@ -10,9 +10,7 @@ const PreviousOA = () => {
     nav(`/previousyear/${id}`);
   };
   useEffect(async () => {
-    const data = await fetch(
-      "http://13.53.175.59:5000/api/QuestionCompanyList"
-    );
+    const data = await fetch("https://free.yashv.xyz/api/QuestionCompanyList");
     const data1 = await data.json();
     console.log(data1);
     setcompanies(data1.data);
